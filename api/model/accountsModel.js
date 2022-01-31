@@ -75,5 +75,5 @@ exports.balance = (data) => {
 
 exports.reset = () => {
     Accounts = [];
-    return "Ok";
+    return "OK";
 }

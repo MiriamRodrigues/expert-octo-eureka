@@ -1,7 +1,9 @@
 const Accounts = require('../model/accountsModel');
 
 exports.postReset = (req, res, next) => {
-    res.status(200).json(Accounts.reset())
+    console.log('aqui')
+    res.status(200).send(Accounts.reset())
+
 };
 
 exports.postEvent = (req, res, next) => {
