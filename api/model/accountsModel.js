@@ -46,8 +46,22 @@ exports.transfer = (data) => {
     var idxOrigin = Accounts.findIndex(i => i.id === data.origin)
     var idxDestination = Accounts.findIndex(i => i.id === data.destination);
 
-    if(idxOrigin === -1 || idxDestination === -1){
+    if(idxOrigin === -1){
         return 0;
+    }
+
+    else if(idxOrigin > -1 && idxDestination === -1){
+        var newAccount = {
+            "id" : data.destination,
+            "balance" : data.amount
+        }
+        Accounts.push(newAccount);
+        Accounts[idxOrigin].balance -= data.amount;
+        
+        return {
+           "origin" : Accounts[idxOrigin],
+           "destination" : newAccount
+        }
     }
 
     else if(idxOrigin > -1 && idxDestination > -1){
